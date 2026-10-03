@@ -1,0 +1,66 @@
+name: Sync gentoo repo
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 1
+          persist-credentials: true
+          sparse-checkout: .github
+
+      - name: Probe
+        id: probe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 .github/scripts/sync_gentoo.py probe
+
+      # Restore-only step: pulls the most recent cache regardless of SHA.
+      # We use a fixed prefix key so restore-keys always finds the last save.
+      - uses: actions/cache/restore@v5
+        id: cache
+        if: steps.probe.outputs.changed == 'true'
+        with:
+          path: |
+            /tmp/gentoo-bare
+            /tmp/xlibre-bare
+          # Exact key encodes both SHAs so an unchanged-SHAs run gets a hit
+          # and the script exits early without even calling bare_fetch.
+          key: clones-${{ steps.probe.outputs.gentoo }}-${{ steps.probe.outputs.xlibre }}
+          # Prefix fallback: restores the most recently saved blobless clone so
+          # bare_fetch can do a true incremental fetch instead of a fresh clone.
+          restore-keys: clones-
+
+      - name: Sync
+        if: steps.probe.outputs.changed == 'true'
+        env:
+          GENTOO_SHA:     ${{ steps.probe.outputs.gentoo }}
+          XLIBRE_SHA:     ${{ steps.probe.outputs.xlibre }}
+          VIM_VER:        ${{ steps.probe.outputs.vim }}
+          BRAVE_VER:      ${{ steps.probe.outputs.brave }}
+          HELIUM_VER:     ${{ steps.probe.outputs.helium }}
+          NORMINETTE_VER: ${{ steps.probe.outputs.norminette }}
+          KERNEL_VER:     ${{ steps.probe.outputs.kernel }}
+          LIMINE_VER:     ${{ steps.probe.outputs.limine }}
+        run: python3 .github/scripts/sync_gentoo.py
+
+      # Save the updated blobless clones after every sync so the next run,
+      # even with different SHAs, gets a warm object store to delta against.
+      # Only runs when the exact key wasn't already in cache (a hit means the
+      # object store is unchanged and re-saving would be a no-op waste of time).
+      - uses: actions/cache/save@v5
+        if: steps.probe.outputs.changed == 'true' && steps.cache.outputs.cache-hit != 'true'
+        with:
+          path: |
+            /tmp/gentoo-bare
+            /tmp/xlibre-bare
+          key: clones-${{ steps.probe.outputs.gentoo }}-${{ steps.probe.outputs.xlibre }}
