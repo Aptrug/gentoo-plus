@@ -1,0 +1,13 @@
+i want you to analyze and audit the github action logs of two separate runs and tackle each of the next points
+for each of the two logs:
+* which elements had updates
+* were updates done incrementally and whether it put unnecessary strain on servers (ignore version checking
+* probings since they're necessary). I'm asking because I run the github actions every 20 minutes 24/7 (using a cloudflare cron job), so I'd like not to cause any mini-DDoS
+* For the amount of work they do and considering I'm using ubuntu-latest, did the github actions finish in a
+  reasonable time or did they take too long due to an inefficiency of some sort (i.e. a culprit causing
+  slowdowns)
+* do you think the workflow .yml file and the .py script need a slight change/fix or whether they're good as they
+  are? if you think they need some change, provide before/after for each region where change is needed
+* do both the .py and .yml files leverage all capabilities they can for speed (cpu cores, git features, github action features, etc)
+* Most importantly, if you're not sure of your info and you need to read some github docs to ensure correct
+  usage, tell me straight away and I'll provide them because I don't want you to hallucinate and make stuff up

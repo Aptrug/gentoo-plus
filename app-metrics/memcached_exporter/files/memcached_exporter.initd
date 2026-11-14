@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+# Copyright 2016-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="Prometheus memcached exporter"
+pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
+user=${user:-${RC_SVCNAME}}
+group=${group:-${RC_SVCNAME}}
+output_log="/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
+error_log="/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
+
+command="/usr/bin/memcached_exporter"
+command_user="${user}:${group}"
+command_background="true"
+
+depend() {
+	after net
+}
