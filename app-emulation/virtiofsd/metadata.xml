@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>michal.privoznik@gmail.com</email>
+		<name>Michal Privoznik</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>virtualization@gentoo.org</email>
+		<name>Gentoo Virtualization Project</name>
+	</maintainer>
+	<use>
+		<flag name="xen">
+			Support for Xen virtualization. Enabling this will _disable_ QEMU/KVM support (<pkg>app-emulation/qemu</pkg>)
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="gitlab">virtio-fs/virtiofsd</remote-id>
+	</upstream>
+</pkgmetadata>

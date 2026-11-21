@@ -1,0 +1,21 @@
+# Copyright 2021-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Eli Schwartz <eschwartz@gentoo.org> (2026-11-05)
+# nss on ppc64 with IS_LITTLE_ENDIAN defined, will only generate its
+# symbols if altivec is not disabled.
+dev-libs/nss cpu_flags_ppc_altivec cpu_flags_ppc_vsx
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2022-01-20)
+# force users to use system versions
+# internal bootstrap only needed in parent big-endian profile
+dev-java/openjdk:8 system-bootstrap
+dev-java/openjdk:11 system-bootstrap
+dev-java/openjdk:17 system-bootstrap
+dev-java/openjdk:21 system-bootstrap
+dev-java/openjdk:25 system-bootstrap
+
+# Michał Górny <mgorny@gentoo.org> (2021-02-19)
+# We have ready-to-use configs here.
+sys-kernel/gentoo-kernel -savedconfig
+sys-kernel/vanilla-kernel -savedconfig
