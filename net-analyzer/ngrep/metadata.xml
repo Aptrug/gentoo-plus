@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+		<name>Gentoo network monitoring and analysis project</name>
+	</maintainer>
+	<upstream>
+		<maintainer cc-on-bugs="yes">
+			<email>jpr5+gentoo@darkridge.com</email>
+			<name>Jordan Ritter</name>
+		</maintainer>
+		<remote-id type="sourceforge">ngrep</remote-id>
+		<remote-id type="github">jpr5/ngrep</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<remote-id type="github">webcamoid/webcamoid</remote-id>
+	</upstream>
+	<use>
+		<flag name="libusb">Enable video capturing from USB devices using <pkg>dev-libs/libusb</pkg></flag>
+		<flag name="libuvc">Enable video capturing from USB devices using <pkg>media-libs/libuvc</pkg></flag>
+		<flag name="pipewire">Enable PipeWire backend</flag>
+		<flag name="qtmedia">Enable Qt Multimedia backend</flag>
+		<flag name="wayland">Enable Wayland backend using wlroots protocol</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>antivirus@gentoo.org</email>
+		<name>Gentoo Antivirus Project</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>kangie@gentoo.org</email>
+		<name>Matt Jolly</name>
+	</maintainer>
+	<use>
+		<flag name="clamapp">
+			Build applications (clamscan, clamd, clamdscan, clamonacc (also has its own USE flag), sigtool, clambc, clamav-milter (also requires milter USE flag), clamdtop, clamsubmit, clamconf).
+		</flag>
+		<flag name="clamonacc">Build the clamonacc on-access scanner</flag>
+		<flag name="experimental">Enable experimental features</flag>
+		<flag name="libclamav-only">Bypass building of libfreshclam and the ClamAV CLI applications.</flag>
+		<flag name="rar">RAR support</flag>
+		<flag name="system-mspack">Use <pkg>dev-libs/libmspack</pkg> instead of the version bundled with ClamAV</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">Cisco-Talos/clamav</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://codeberg.org/snakeyaml/snakeyaml/issues</bugs-to>
+		<changelog>https://codeberg.org/snakeyaml/snakeyaml/wiki/Changes</changelog>
+		<doc>https://codeberg.org/snakeyaml/snakeyaml/wiki/Documentation</doc>
+		<remote-id type="bitbucket">snakeyaml/snakeyaml</remote-id>
+		<remote-id type="codeberg">snakeyaml/snakeyaml</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mgorny@gentoo.org</email>
+    <name>Michał Górny</name>
+  </maintainer>
+  <stabilize-allarches/>
+  <upstream>
+    <!-- Do not copy ebuilds from his overlay -->
+    <maintainer cc-on-bugs="yes">
+      <email>martin@mvath.de</email>
+      <name>Martin Väth</name>
+    </maintainer>
+    <bugs-to>mailto:martin@mvath.de</bugs-to>
+    <remote-id type="github">vaeth/push</remote-id>
+  </upstream>
+</pkgmetadata>

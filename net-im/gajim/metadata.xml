@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!-- maintainer-needed -->
+  <upstream>
+    <doc>https://gitlab.com/gajim/gajim/-/wikis/home</doc>
+    <remote-id type="gitlab">gajim/gajim</remote-id>
+  </upstream>
+  <use>
+    <flag name="voice">Support for video calls, audio calls and voice messages</flag>
+  </use>
+</pkgmetadata>
